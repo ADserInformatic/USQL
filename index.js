@@ -23,7 +23,7 @@ app.use(express.raw());
 const uri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@usql.lxhz8.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 
 
-const option={ useNewUrlParser: true, useUnifiedTopology: true };
+const option={ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
 mongoose.connect(uri,option)
 .then(() => console.log('Base de datos conectada'))
 .catch(e => console.log('error db:', e))
@@ -41,6 +41,7 @@ const authRoutes = require('./routes/auth');
 const dashboard =require('./routes/dashboard');
 const CatgoriasRoute=require('./routes/Categorias');
 const validatetoken =require('./routes/validate-token');
+const fotos =require('./routes/Fotos');
 //rutas de vendedores
 //const addpyme = require('./routes/vendedor/addpyme');
 
@@ -48,6 +49,7 @@ const validatetoken =require('./routes/validate-token');
 app.use('/api/user', authRoutes);
 app.use('/api/Categorias', CatgoriasRoute);
 app.use('/api/dashboard',validatetoken,dashboard);
+app.use('/api', fotos)
 //app.use('/api/agent/addpyme', validatetoken,addpyme);
 
 
