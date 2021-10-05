@@ -40,6 +40,8 @@ mongoose.connect(uri,option)
 const authRoutes = require('./routes/auth');
 const dashboard =require('./routes/dashboard');
 const CatgoriasRoute=require('./routes/Categorias');
+const ConsultasRoute=require('./routes/Consultas');
+const NoticiasRoute=require('./routes/Noticias')
 const validatetoken =require('./routes/validate-token');
 //rutas de vendedores
 //const addpyme = require('./routes/vendedor/addpyme');
@@ -47,6 +49,8 @@ const validatetoken =require('./routes/validate-token');
 // route middlewares
 app.use('/api/user', authRoutes);
 app.use('/api/Categorias', CatgoriasRoute);
+app.use('/api/Noticias', NoticiasRoute);
+app.use('/api/Contacto', ConsultasRoute);
 app.use('/api/dashboard',validatetoken,dashboard);
 //app.use('/api/agent/addpyme', validatetoken,addpyme);
 

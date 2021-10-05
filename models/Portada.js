@@ -1,4 +1,4 @@
-import {boolean, string} from '@hapi/joi';
+const {boolean, string}=require( '@hapi/joi');
 const mongoose= require('mongoose');
 
 const portadaSchema=mongoose.Schema({
@@ -28,4 +28,4 @@ igual:{
     max:100
 },
 });
-module.exports= mongoose.models('Portada',portadaSchema);
+module.exports= mongoose.model('Portada',portadaSchema);

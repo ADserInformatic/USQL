@@ -1,5 +1,4 @@
-import { boolean, date, string } from '@hapi/joi';
-// const {boolean, string}= require ('@hapi/joi')
+const {boolean, string}= require ('@hapi/joi')
 const mongoose = require('mongoose');
 
 const noticiaSchema = mongoose.Schema({
@@ -58,4 +57,4 @@ const noticiaSchema = mongoose.Schema({
         max: 1000
     }
 });
-module.exports=mongoose.models('Noticia',noticiaSchema);
+module.exports=mongoose.model('Noticia',noticiaSchema);

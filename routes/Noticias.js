@@ -6,7 +6,7 @@ const Categorias=require('../models/Categorias');
 const Portada=require('../models/Portada');
 //validaciones de modelo
 const Joi=require('@hapi/joi');
-const { date } = require('@hapi/joi');
+
 //Validaciones 
 const schemaNoticia=Joi.object({
     id_categoria:Joi.string().min(1).max(255).required(),
@@ -119,39 +119,77 @@ router.get('/GetLatest',async (req,res)=>{
 //Devuelve ultima noticia para registrados
 router.get('/GetLatestR',async (req,res)=>{
     const IdPortada= await Portada.findOne({nombre:"portada"});
-    const Ultima;
-    if(IdPortada.igual==0){Ultima=await Noticia.findOne({_id:IdPortada.latestr});}
-        else{Ultima=await Noticia.findOne({_id:IdPortada.latest});}
-    
-    if(!Ultima){
-        return res.status(400).json({error:true,mensaje:"AUN NO HAY NOTICIAS"})
+    if(!IdPortada){
+        return res.status(400).json({error:true,mensaje:"AUN NO HAY NOTICIAS"});
     }
+    if(IdPortada.igual==0){
+        const Ultima=await Noticia.findOne({_id:IdPortada.latestr});
+        return res.json({Ultima});}
+    const Ultima=await Noticia.findOne({_id:IdPortada.latest});
     res.json({Ultima});
 })
 //ARMA LA PORTADA
 router.get('/GetPortada', async (req,res)=>{
-    const ListaNoticias=await Noticia.find();
-    if(!ListaNoticias){
-        return res.status(400).json({error:true,mensaje:"AUN NO HAY NOTICIAS"})
-    }
-})
-const Noticia0;
-const Noticia1;
-const Noticia2;
-const Noticia3;
+    const ListaNoticias=[];
+
+
+let Noticia0;
+let Noticia1;
+let Noticia2;
+let Noticia3;
+
 if(ListaNoticias.count()>=1){
     Noticia0=Noticia.findOne({portada:1,hide:1})
 }
 if(ListaNoticias.count()>=2){
     Noticia1=Noticia.findOne({_id:{$ne:Noticia0._id},portada:1,hide:1})
+    ListaNoticias.push(Noticia1);
 }
 if(ListaNoticias.count()>=3){
     Noticia2=Noticia.findOne({$or:[{_id:{$ne:Noticia0._id},portada:1,hide:1},{_id:{$ne:Noticia1._id},portada:1,hide:1}]})
+    ListaNoticias.push(Noticia2);
 }
+if(ListaNoticias.count()>=3){
+    Noticia3=Noticia.findOne({$or:[{_id:{$ne:Noticia0._id},portada:1,hide:1},{_id:{$ne:Noticia1._id},portada:1,hide:1},{_id:{$ne:Noticia2._id},portada:1,hide:1}]})
+    ListaNoticias.push(Noticia3);
+}
+if(!ListaNoticias){
+        return res.status(400).json({error:true,mensaje:"AUN NO HAY NOTICIAS"})
+    }
+res.json({ListaNoticias})
+})
 
+//ARMA LA PORTADA REGISTRADOS
+router.get('/GetPortadaR', async (req,res)=>{
+    const ListaNoticias=[];
 
+const Noticia0=Noticia.findOne({portada:1,hide:1});
+const Noticia1=Noticia.findOne({_id:{$ne:Noticia0._id},portada:1})
+ListaNoticias.push(Noticia1);
+const Noticia2=Noticia.findOne({$or:[{_id:{$ne:Noticia0._id},portada:1},{_id:{$ne:Noticia1._id},portada:1}]})
+ListaNoticias.push(Noticia2);
+const Noticia3=Noticia.findOne({$or:[{_id:{$ne:Noticia0._id},portada:1},{_id:{$ne:Noticia1._id},portada:1},{_id:{$ne:Noticia2._id},portada:1}]})
+ListaNoticias.push(Noticia3);
+
+if(!ListaNoticias){
+        return res.status(400).json({error:true,mensaje:"AUN NO HAY NOTICIAS"})
+    }
+res.json({ListaNoticias})
+})
 
 //AGREGAR NOTICIA
+router.get('/register', async (req,res)=>{
+
+
+})
 //modificar
+router.get('/edit/:id', async (req,res)=>{
+    const id= req.params.id;
+
+})
 //eliminar
+router.get('/DeleteNoticia/:id', async (req,res)=>{
+    const id= req.params.id;
+})
+module.exports=router;
 
