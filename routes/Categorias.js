@@ -71,7 +71,7 @@ router.delete('/DeleteCategoria/:id',async(req, res)=>{
             mensaje: "NO SE PUEDE ELIMINAR ESTA CATEGORIA"
         })
     }
-    //********************************************************************** */
+
     //COMPROBAR QUE NO HAYA NOTICIAS CON ESTA CATEGORIA
     const NoticiasCategoria=await Noticias.find({id_categoria:Aeliminar._id})
     if(NoticiasCategoria){
