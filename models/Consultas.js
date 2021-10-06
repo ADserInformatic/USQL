@@ -20,6 +20,6 @@ const contactoSchema = mongoose.Schema({
         minlength: 6,
         max: 500
     }
-})
+}); 
 
 module.exports = mongoose.model('Contacto', contactoSchema);
