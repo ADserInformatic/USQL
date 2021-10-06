@@ -72,7 +72,7 @@ router.post('/register', async (req, res) => {
 router.post('/Login', async (req, res) => {
     const {error}=schemaLogin.validate(req.body);
     if (error){
-       return res.status(400).json({error: "error validacion",mensaje: error.details[0].message})}
+       return res.status(400).json({error: true,mensaje:"error validacion"})}
     
     var existe;
 
@@ -100,7 +100,8 @@ router.post('/Login', async (req, res) => {
     //     message: "adentro",
     //     token: token
     // })
-
+    if(existe.rol==0){localStorage.setItem('resultado',0)}else{localStorage.setItem('resultado',1)}
+    
     res.header('auth-token', token).json({
             user_id: existe._id,
             rol: existe.rol,
@@ -162,6 +163,7 @@ router.post('/Modificar/:id', async (req, res)=>{
 
 router.get('/Logout',async (req,res)=>{
     var existe;
+    nodeStorage.removeItem('resultado')
     existe=await User.findOne({nickname:req.body.nickname})
     if(!existe){
         return res.status(400).json({error:true, mensaje: "no existe el usuario"})
