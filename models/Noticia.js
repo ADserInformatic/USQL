@@ -34,12 +34,7 @@ const noticiaSchema = mongoose.Schema({
         min: 2, 
         max: 1000
     },
-    foto_portada:{
-        type: String,
-        require: true,
-        min: 2, 
-        max: 1000
-    },
+
     hide:{
         type: String,
         require: true,

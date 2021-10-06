@@ -1,5 +1,6 @@
 const router=require('express').Router();
 const Categoria=require('../models/Categorias');
+const Noticias=require('../models/Noticia');
 
 const Joi=require('@hapi/joi');
 //validar nueva categoria
@@ -58,6 +59,12 @@ router.post('/edit/:id', async (req,res)=>{
 router.delete('/DeleteCategoria/:id',async(req, res)=>{
     const id=req.params.id;
     const Aeliminar= await Categoria.findOne({_id:id});
+    if(!Aeliminar){
+        return res.status(400).json({
+            error:true,
+            mensaje: "NO SE ENCUENTRA ESTA CATEGORIA"
+        })
+    }
     if(Aeliminar.nombre=="POLICY ANALISYS" || Aeliminar.nombre=="LITERACY"){
         return res.status(400).json({
             error:true,
@@ -66,6 +73,13 @@ router.delete('/DeleteCategoria/:id',async(req, res)=>{
     }
     //********************************************************************** */
     //COMPROBAR QUE NO HAYA NOTICIAS CON ESTA CATEGORIA
+    const NoticiasCategoria=await Noticias.find({id_categoria:Aeliminar._id})
+    if(NoticiasCategoria){
+        return res.status(400).json({
+            error:true,
+            mensaje: "NO SE PUEDE ELIMINAR ESTA CATEGORIA"
+        })
+    }
     const eliminado = await Categoria.findByIdAndDelete(Aeliminar)
     res.json({error: false, data: eliminado})
 

@@ -1,5 +1,6 @@
 const router = require ('express').Router();
-
+const multer =  require('../multer/news');
+const fs = require('fs-extra');
 //importo Noticias
 const Noticia=require('../models/Noticia');
 const Categorias=require('../models/Categorias');
@@ -178,18 +179,71 @@ res.json({ListaNoticias})
 })
 
 //AGREGAR NOTICIA
-router.get('/register', async (req,res)=>{
-
-
+router.get('/register', multer.fotonoticia, async (req,res)=>{
+    const verificaIdCategoria= await Categorias.findOne({_id:req.body.id_categoria})
+    if(!verificaIdCategoria){
+        return res.status(400).json({
+            error:true,
+            mensaje:"CATEGORIA NO EXISTE" 
+        })
+    }
+    const {id_categoria, titulo,subtitulo,descripcion,foto_portada,foto_noticia, hide, date, video_noticia}=req.body;
+    const New=new Noticia();
+    New.id_categoria=id_categoria, 
+    New.titulo=titulo,
+    New.subtitulo=subtitulo,
+    New.descripcion=descripcion,
+    New.foto_portada=req.file.path,
+    New.foto_noticia=foto_noticia, 
+    New.hide=hide, 
+    New.video_noticia=video_noticia
+    try {
+        const NoticiasDB= await Noticia.save();
+        res.json({
+            mensaje: NoticiasDB
+        })
+    }
+    catch (error) {
+        res.status(400).json({error})
+    }
 })
 //modificar
-router.get('/edit/:id', async (req,res)=>{
+router.get('/edit/:id', multer.fotonoticia,async (req,res)=>{
     const id= req.params.id;
+    const Editar= await Noticia.findOne({_id:id})
+    if(!Editar){
+        return res.status(400).json({
+            error:true,
+            mensaje:"NO SE ENCUENTRA NOTICIA CON ESTE ID"
+        })
+    }
+    const {id_categoria, titulo,subtitulo,descripcion,foto_portada,foto_noticia, hide, date, video_noticia}=req.body;
+    const Actualizar = await Noticia.updateOne({_id:id},{id_categoria, titulo,subtitulo,descripcion,foto_portada,foto_noticia:req.file.path, hide, date, video_noticia})
+    const Modificado = await Noticia.findOne({_id:id})
+    res.json({
+        Modificado
+    });
 
 })
 //eliminar
 router.get('/DeleteNoticia/:id', async (req,res)=>{
-    const id= req.params.id;
+
+    const id=req.params.id;
+    const Aeliminar= await Noticia.findOne({_id:id});
+    if(!Aeliminar){
+        return res.status(400).json({
+            error:true,
+            mensaje: "NO SE ENCUENTRA ESTA NOTICIA"
+        })
+    }
+    const fotoportada=Aeliminar.fotoportada;
+    const fotonoticia=Aeliminar.fotonoticia;
+    await fs.unlink(fotoportada);
+    await fs.unlink(fotonoticia);
+    const eliminado = await Categoria.findByIdAndDelete(Aeliminar)
+    res.json({error: false, data: eliminado})
+
+
 })
 module.exports=router;
 
