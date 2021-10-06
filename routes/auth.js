@@ -72,7 +72,7 @@ router.post('/register', async (req, res) => {
 router.post('/Login', async (req, res) => {
     const {error}=schemaLogin.validate(req.body);
     if (error){
-       return res.status(400).json({error: error.details[0].message})
+       return res.status(400).json({error: "error validacion"},mensaje: error.details[0].message})
     }
     var existe;
 
