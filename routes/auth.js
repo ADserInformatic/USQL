@@ -76,9 +76,9 @@ router.post('/Login', async (req, res) => {
     
     var existe;
 
-    existe=await User.findOne({email:req.body.NicknameEmail})//true si existe
+    existe=await User.findOne({email:req.body.email})//true si existe
     if(!existe){
-        existe=await User.findOne({nickname:req.body.NicknameEmail})//true si existe
+        existe=await User.findOne({nickname:req.body.email})//true si existe
         if(!existe){return res.status(400).json({error: true,mensaje:"email o nickname invalid"})
                     }
     }
