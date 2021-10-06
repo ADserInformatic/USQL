@@ -24,7 +24,7 @@ const schemaRegister=Joi.object({
 
 //validaciones para login
 const schemaLogin=Joi.object({
-    NicknameEmail: Joi.string().min(2).max(255).required(),
+    email: Joi.string().min(2).max(255).required(),
     password: Joi.string().min(6).max(1024).required()
 })
 
