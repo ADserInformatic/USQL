@@ -1,0 +1,217 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link"  >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" class="nav-link active"routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="row">
+                        <h2>Modify Report</h2>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <form (ngSubmit)="onSubmit()" [formGroup]="userForm" autocomplete="off">
+                                <select formControlName="category" >
+                                    <option value="" selected> Select category </option><br>
+                                    <option *ngFor="let cat of categories" value="{{cat._id}}"> {{cat.nombre}} </option>
+                                </select>
+
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    <input type="textbox" name="titulo" class="form-control" formControlName="titulo">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('titulo')?.invalid && (userForm.get('titulo')?.dirty || userForm.get('titulo')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Title</strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                    <!-- Control de pattern -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Subtitle (Optional):</label>
+                                    <textarea class="form-control" name="subtitulo" formControlName="subtitulo"></textarea>
+                                    <!-- Error
+                                    <div *ngIf="userForm.get('subtitulo')?.invalid && (userForm.get('subtitulo')?.dirty || userForm.get('subtitulo')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Subtitle </strong> is required.
+                                        </div>
+                                    </div>
+                                    Fin Error -->
+                                </div>
+                                <div class="form-group">
+                                        <label>Report</label>
+                                        <ckeditor 
+                                        [config]="{ toolbar: [[ 'Cut', 'Copy', 'Paste', 'PasteText','-', 'Undo', 'Redo' ],['Bold','Italic','Underline','Strike','Subscript','Superscript'],
+                                        ['SelectAll'],
+                                        ['ifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+                                        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+                                        ['Styles','Format','FontSize'],
+                                        ['TextColor','BGColor'],
+                                        ['Link','Unlink', 'Anchor'],
+                                        ['HorizontalRule','Smiley','SpecialChar']
+                                        ] }" 
+                                        id="report" class="form-control" formControlName="report"></ckeditor>
+                                       
+                                    
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('report')?.invalid && (userForm.get('report')?.dirty || userForm.get('report')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Report </strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+
+                                    <br>
+                                    <div style="display: flex;">
+                                    <div style="display: block;">
+                                        <label style="display: block;">
+                                                    <span>Main Photo:<br>Click on the image </span><br>
+
+                                                     <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-link sinactive" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            <div class="containerperfil">
+                                                            <div class="field">
+                                                            <div class="column">
+                                                            <img class="noimagen" [src]="this.photoSelectedportada || imageUrl" />
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                    </button>
+  
+                                                        <!-- Modal -->
+                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-fotosedit [objetoReporte]="this.objetoReporte"></app-fotosedit>
+        </div>
+        <div class="modal-footer">
+          <button (click)="this.actualizado()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+
+        </div>
+      </div>
+    </div>
+                                                    </div>
+  
+                                       
+                                            </label>
+
+
+
+                                        </div>
+
+                                    <div>
+                                    <div style="display: block;">
+                                    <div *ngIf="this.subiendo" >
+                                        <!-- <img src="./../../../assets/uploading2.gif" alt=""> -->
+                                        <progress id="file" value="{{this.porcentaje}}" max="{{this.total}}" style="width: 100%;height: 15px;"></progress>
+                                        <p style="margin-left:48%">{{this.calculo}}</p> 
+                                        <!-- <div class="progress" style="width: 100%;">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated " style="width: {{this.calculo}};" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" >{{this.calculo}}</div>
+                                        </div> -->
+                                        <div *ngIf="this.errorcarga" class="alert alert-danger">
+                                            <div>
+                                                <strong>Sorry</strong>. Something is wrong. Check the format and try again later.
+                                            </div>
+                                        </div>
+                                        <div *ngIf="this.exito" class="alert alert-success">
+                                            <div>
+                                                <strong>Suscessfuly</strong>.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label *ngIf="!this.subiendo">
+                                        <span>Report Photo:<br>Click on the image </span><br>
+                                        <div class="field">
+                                            <div class="file has-name is-primary is-fullwidth">
+                                                <div class="mb-3">
+                                                     <input hidden class="form-control" type="file" id="formFile" #fileInput (change)="onChange($event)" formControlName="fotonot" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="containerperfil">
+                                            <div class="field">
+                                                <div class="column">
+                                                    <img class="noimagen" [src]="this.photoSelectednoticia || imageUrl" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                                </div>
+                            
+                                <!-- <p>aca para subir archivo de foto 1 para portada</p>
+                                <br>
+                                <p>para subir foto 2 de noticia</p>
+                                <br>
+                                <p>aca para subir un video</p> -->
+                            
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="portada">Appear in Home</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="0" id="0" formControlName="portada">
+                                            No
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="1" id="1" checked="" formControlName="portada">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="hide">View</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="0" id="0" formControlName="hide">
+                                            Only Registered
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="1" id="1" checked="" formControlName="hide">
+                                            All.(public)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link Tableau</label>
+                                    <textarea class="form-control" name="tableau" formControlName="tableau"></textarea>
+                                
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn float-right btn-outline-success" style="margin-left: 5px;"[disabled]="userForm.invalid">Modify</button>
+                                    <a routerLink="/newslist"><button class="btn float-right btn-outline-danger">Cancel</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-main></app-footer-main>

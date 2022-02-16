@@ -1,0 +1,78 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link" routerLink="/panela">Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link"  routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link"  routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" class="nav-link active" routerLink="/vidlist">Data Visuals Videos</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+            
+            <div class="row">
+              
+                <a routerLink="/vidadd"><button class="btn btn-outline-primary"><i
+                            class="fas fa-user-plus"></i> Add Video</button></a>
+                <!-- <div class="float-right">
+                    <div class="m5"><i class="fa fa-eye"></i> View</div>
+                    <div class="m5"><i class="fas fa-plus-circle"></i> Active</div>
+                    <div class="m5"><i class="fas fa-minus-circle"></i> Desactive</div>
+                    <div class="m5"><i class="fas fa-edit"></i> Edit</div>
+                    <div class="m5"><i class="fas fa-eraser"></i> Delete</div>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="d-none d-sm-table-cell">Titulo</th>
+                                <th scope="col" class="d-none d-md-table-cell">View</th>
+                                <!-- <th scope="col" class="d-none d-md-table-cell">image</th> -->
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr scope="row" *ngFor="let category of categories">
+                                <td>
+                                    {{category.titulo}}
+                                </td>
+                                <td class="d-none d-md-table-cell" >
+                                    <p *ngIf="category.hide==0;">Only Registered</p>
+                                    <p *ngIf="category.hide==1;">All visitors (Public)</p>
+                                 </td>
+                                <!-- <td >
+                                   <img class="" src="{{category.url}}" alt=""> 
+                                </td>  -->
+                                <td>
+                                <a routerLink="/viddel/{{category._id}}">  <i class="material-icons">delete_forever</i></a>
+         
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-main></app-footer-main>
+
+
+
+            

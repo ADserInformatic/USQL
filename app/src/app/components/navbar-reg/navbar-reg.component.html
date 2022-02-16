@@ -1,0 +1,37 @@
+      <!--Barra de navegacion-->
+      <nav class="nav navegador">
+        <div class="logo">
+           <img src="../../../assets/LOGO.png" alt="logo">
+        </div>
+        <div class="links" id="links">
+          <a routerLink="/main" routerLinkActive="'active'"(click)="recargar();" [ngClass]="{'active':this.homer}">home</a>
+          <a routerLink="/policy" routerLinkActive="'active'"(click)="recargar();" [ngClass]="{'active':this.policy}">POLICY ANALYSIS</a>
+          <a routerLink="/literacy" routerLinkActive="'active'"(click)="recargar();" [ngClass]="{'active':this.literacy}">Teaching & Learning</a>
+          <a routerLink="/dvisuals" routerLinkActive="'active'" (click)="recargar();" [ngClass]="{'active':this.dvisuals}">data visuals</a>
+          <a routerLink="/download" routerLinkActive="'active'"(click)="recargar();" [ngClass]="{'active':this.download}">download</a>
+          <a routerLink="/contact" routerLinkActive="'active'"(click)="recargar();" [ngClass]="{'active':this.contact}">contact</a>
+        </div>
+      <div class="linklogin" *ngIf="rol=='1';">
+          <a routerLink="/logout" class="login" routerLinkActive="'active'">{{Username}}: Logout</a>
+      </div>
+      <div class="linklogin" *ngIf="rol=='0';" >
+        <img class="imagenlogin" src="../../../assets/icono login.png" alt="">
+        <a routerLink="/panela" class="login" 
+        routerLinkActive="'active'" (click)="recargar();" [ngClass]="{'active':this.panel}" >
+        {{Username}}</a>
+    </div>
+      <div class="icons">
+
+          <a href="https://twitter.com/DavidWakelyn?s=08" target="_blank"><img src="../../../assets/TWITTER.png" alt=""></a>
+          <a href="https://www.linkedin.com/in/david-scarlett-wakelyn-9227275/" target="_blank"><img src="../../../assets/LINKEDIN.png" alt=""></a>
+      </div>
+      <div class="hamburguer" id="hamburguer">
+          <div id="line1"></div>
+          <div id="line2"></div>
+          <div id="line3"></div>
+      </div>
+      
+  </nav>
+  <div id="conten">
+</div>
+

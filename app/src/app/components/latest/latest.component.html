@@ -1,0 +1,64 @@
+
+<div class="cuerpo">
+    <div class="texto">
+        <h1 *ngIf="this.errorlatest">
+            NO REPORT YET
+        </h1>
+        <h5> Latest Report</h5>
+        <h1><strong>{{this.previewtitulo}}</strong></h1>
+        <h4>{{this.previewsubtitulo}}</h4>
+        <hr class="linea">
+        <!-- <p>{{this.previewdescripcion}}</p> -->
+        <div id="descripcion"></div>
+        <button routerLink={{this.previewlink}} ><span>read more</span><span class="material-icons">play_arrow</span></button>
+    </div>
+    <div class="mapa">
+        <div class="imagen">
+            
+            <img src={{this.previewurl}}  alt="">
+        </div>
+        
+        <div class="desliza">
+            <!-- <li class="prim" *ngFor="let noti of noticiasportadas"> -->
+                 <!-- <div class="raro" *ngIf="noticiasportadas.indexOf(noti)==0">
+                     <a  class="linkss" routerLink="{{noti.descripcion}}">
+                         <h6 class="parrafo">{{noti.titulo}}</h6> </a>
+                        <h6 class="fecha">{{noti.date}}</h6>
+                    
+                    
+                 </div>  -->
+            <li class="prim" (click)="this.opcion0()">
+                 <div class="raro" *ngIf="activada==0" >
+                    <h6 class="parrafo">{{this.Noticia0.Title}}</h6> 
+                    <h6 class="fecha">{{this.Noticia0.date}}</h6>
+                 </div> 
+                 <div *ngIf="activada!=0" >
+                    <h6 class="parrafo">{{this.Noticia0.Title}}</h6> 
+                    <h6 class="fecha">{{this.Noticia0.date}}</h6>
+                 </div> 
+            </li>
+            <li class="prim" (click)="this.opcion1()">
+                <div class="raro" *ngIf="activada==1" >
+                   <h6 class="parrafo">{{this.Noticia1.Title}}</h6> 
+                   <h6 class="fecha">{{this.Noticia1.date}}</h6>
+                </div> 
+                <div *ngIf="activada!=1"  >
+                    <h6 class="parrafo">{{this.Noticia1.Title}}</h6> 
+                    <h6 class="fecha">{{this.Noticia1.date}}</h6>
+                 </div> 
+
+           </li>
+           <li class="prim" (click)="this.opcion2()">
+            <div class="raro" *ngIf="activada==2" >
+               <h6 class="parrafo">{{this.Noticia2.Title}}</h6> 
+               <h6 class="fecha">{{this.Noticia2.date}}</h6>
+            </div> 
+            <div  *ngIf="activada!=2">
+                <h6 class="parrafo">{{this.Noticia2.Title}}</h6> 
+                <h6 class="fecha">{{this.Noticia2.date}}</h6>
+             </div> 
+            </li>
+        </div>
+
+    </div>
+</div>

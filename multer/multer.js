@@ -6,8 +6,14 @@ const multer = require('multer');
 //configuracion para usar dentro del midleware multter:
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, path.parse(__dirname).dir  + '/img/fotos')
+        cb(null, path.resolve(__dirname,"../../public_html/assets/img/Fotos"))
+        // cb(null, path.parse(__dirname).dir + '/app/assets/img/Fotos')
     },
+
+
+
+
+
     filename: (req, file, cb)=>{
         const filT = /jpeg|jpg|png|gif/;
         const mimeT =  filT.test(file.mimetype);
@@ -19,6 +25,8 @@ const storage = multer.diskStorage({
     }
 });
 
+
+
 const upload = multer({storage});
 
-exports.upload = upload.single('foto')
+exports.upload = upload.single('url')

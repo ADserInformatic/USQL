@@ -1,0 +1,161 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link"  >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" class="nav-link active" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="row">
+                        <h2>Add News</h2>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <form (ngSubmit)="onSubmit()" [formGroup]="userForm" autocomplete="off">
+
+                                <label>Select Category: </label><br>
+                                <select formControlName="category" >
+                                    
+                                 <option *ngFor="let cat of categories" value={{cat._id}}> {{cat.nombre}} </option>
+                                </select>
+                                
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    <input type="textbox" name="titulo" class="form-control" formControlName="titulo" autofocus>
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('titulo')?.invalid && (userForm.get('titulo')?.dirty || userForm.get('titulo')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Title</strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                    <!-- Control de pattern -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Subtitle (Optional):</label>
+                                    <textarea class="form-control" name="subtitulo" formControlName="subtitulo"></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                        <label>Report</label>
+                                        <!-- WYSIWYG -->
+
+
+                                        <!-- <textarea class="form-control" name="report" formControlName="report"></textarea> -->
+                                        <ckeditor 
+                                        [config]="{ toolbar: [[ 'Cut', 'Copy', 'Paste', 'PasteText','-', 'Undo', 'Redo' ],['Bold','Italic','Underline','Strike','Subscript','Superscript'],
+                                        ['SelectAll'],
+                                        ['ifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+                                        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+                                        ['Styles','Format','FontSize'],
+                                        ['TextColor','BGColor'],
+                                        ['Link','Unlink', 'Anchor'],
+                                        ['HorizontalRule','Smiley','SpecialChar']
+                                        ] }" 
+                                         class="form-control" name="report" formControlName="report" data="<p>Enter report here...</p>"></ckeditor>
+
+                                    
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('report')?.invalid && (userForm.get('report')?.dirty || userForm.get('report')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Report </strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                </div>
+                                <br>
+                                <span>Main Photo: <br>(click on the image) </span><br>
+                                <div *ngIf="this.subiendo">
+                                    <progress id="file" value="{{this.porcentaje}}" max="{{this.total}}" style="width: 100%;height: 15px;"></progress>
+                                    <p style="margin-left:48%">{{this.calculo}}</p> 
+                                    <div *ngIf="this.errorc" class="alert alert-danger">
+                                        <div>
+                                            <strong>Sorry</strong>. Something is wrong. Check the format and try again later.
+                                        </div>
+                                    </div>
+                                    <div *ngIf="this.exito" class="alert alert-success">
+                                        <div>
+                                            <strong>Suscessfuly</strong>.
+                                        </div>
+                                    </div>
+                                </div>
+                                <label *ngIf="!this.subiendo">
+                                    
+                                    <div class="field">
+                                        <div class="file has-name is-primary is-fullwidth">
+                                            <div class="mb-3">
+                                                 <input class="form-control" hidden type="file" id="formFile" #fileInput (change)="onChange($event)" formControlName="fotoportada" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="containerperfil">
+                                        <div class="field">
+                                            <div class="column">
+                                                <img [src]="photoSelectedportada || imageUrl" class="img-fluid noimagen" (click)="fileInput.click()" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="portada">Appear in Home:</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="0" id="0" formControlName="portada">
+                                            No
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="1" id="1" checked="" formControlName="portada">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="hide">Only for registered:</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="0" id="0" formControlName="hide">
+                                            Yes
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="1" id="1" checked="" formControlName="hide">
+                                            No.(public)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Link Tableau</label>
+                                    <textarea class="form-control" name="tableau" formControlName="tableau"></textarea>
+                                
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn float-right btn-outline-success" style="margin-left: 5px;"[disabled]="userForm.invalid">Add</button>
+                                    <a routerLink="/newslist"><button class="btn float-right btn-outline-danger">Cancel</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-main></app-footer-main>

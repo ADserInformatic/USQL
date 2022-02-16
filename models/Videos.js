@@ -22,4 +22,4 @@ const videoSchema=mongoose.Schema({
     }
 });
 
-module.exports=mongoose.models('Video',videoSchema);
+module.exports=mongoose.model('Videos',videoSchema);

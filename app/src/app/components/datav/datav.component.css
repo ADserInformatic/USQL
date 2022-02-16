@@ -1,0 +1,119 @@
+
+
+h4, h2,small,a{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.carousel2{background-color: #512475;}
+.Carousel{
+    width: 100%;
+    /* margin: 0px 60px; */
+	box-sizing: border-box;
+    
+}
+/* images */
+
+.slick-list{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 304px;
+    padding: 10px 0px;
+    margin: 0px auto;
+    max-width: 90vw;
+    overflow: hidden;
+}
+.slick-track{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    transition: .5s ease-in-out;
+}
+.slick{
+    position: relative;
+    width: 578px;
+    padding: 0 18px;
+    margin-left: 10px;
+    float: left;
+    box-sizing: border-box;
+    display: flex;
+    height: 300px;
+    text-align: center;
+}
+/* .slick figcaption{
+    z-index: 1;
+    font-size: 22px;
+    line-height: 23px;
+    color: rgb(15, 36, 223);
+    padding: 15px;
+    margin-top: -30px;
+} */
+.slick h4 small{
+    font-size: 15px;
+    display: block;
+}
+.slick a{
+    width: 100%;
+    text-align: center;
+}
+
+.slick a img, .slick a video{
+    object-fit: contain;
+    height: 300px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);
+    transition: .3s ease-in-out;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.slick a img:hover{
+    opacity: .85;
+}
+
+/* buttons */
+
+.slick-arrow{
+    border-radius: 30px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 4;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+    border: 0;
+    cursor: pointer;
+}
+.slick-arrow:focus{
+    outline: 0;
+}
+.slick-arrow svg{
+    width: 12px;
+    height: 100%;
+    color: rgba(0,0,0,.7);
+}
+.slick-prev{
+    left: 0px;
+}
+.slick-next{
+    right: 0px;
+}
+
+@media (max-width: 700px) {
+    .slick{
+        width: 310px;
+    }
+    .cuadro .mitad1 h1{
+        text-align: left;
+        font-size: 40px;
+        color: var(--azul);
+    }
+}

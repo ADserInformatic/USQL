@@ -1,0 +1,35 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link"  >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" class="nav-link active" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a> 
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+<button class="btn btn-outline-danger" (click)="borrar();">Delete</button>
+<button class="btn btn-outline-primary" routerLink="/pholist">Calncel</button>
+
+<h1>Text Caption: {{this.foto.titulo}}</h1>
+<img src="{{this.direccion}}" class="img-fluid" alt="">
+
+        
+</div>
+</div>
+</div>
+</div>
+</div>
+<app-footer-main></app-footer-main>

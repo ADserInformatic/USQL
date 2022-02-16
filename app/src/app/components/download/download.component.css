@@ -1,0 +1,19 @@
+@media(max-width: 700px){
+    /*DATA VISUALS*/ 
+        .cuadro{
+            height: 60vh;
+        }
+        .cuadro .mitad1 h1{
+            text-align: left;
+            font-size: 40px;
+            color: var(--azul);
+        }
+    }
+    @media(max-width: 1000px){
+        /*DATA VISUALS*/ 
+            .cuadro .mitad1 h1{
+                text-align: left;
+                font-size: 2rem;
+                color: var(--azul);
+            }
+        }

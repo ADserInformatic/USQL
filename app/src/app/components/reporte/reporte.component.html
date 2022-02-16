@@ -1,0 +1,61 @@
+  <div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+<div class="container reporte1" style="align-items: center;">
+  
+  <div *ngIf="this.imagenportada" class="landing" >
+    <h2 >{{this.reporte.titulo!}}</h2>
+    <hr>
+    <div >
+      <div class="img" >
+        <img  src="{{this.reporte.foto_portada}}" alt="">
+      </div>
+    </div>
+
+    <h3>{{this.reporte.subtitulo!}}</h3>
+  </div>
+  
+  <div *ngIf="!this.imagenportada" style="text-align: center;">
+    <h2>{{this.reporte.titulo!}}</h2>
+    <hr>
+    <h3>{{this.reporte.subtitulo!}}</h3>
+  </div>
+
+  <hr>
+  <div id="descripcion"></div>
+  <br><br>
+
+  <div *ngIf="this.imagennoticia">
+    <div class="imge">
+      <img src="{{this.reporte.foto_noticia}}" alt="" width="100%">
+    </div>
+  </div>
+
+  <div *ngIf="this.tableau" id="vizContainer" class="tableau">
+    
+  </div>
+  <div id="url" hidden>{{this.reporte.tableau}}</div>
+  <br><br>
+  <div class="botones">
+    <button (click)="goback();" class="btn btn-outline-success buttonback"><span class="material-icons espejar">play_arrow</span><span>Go Back</span></button>
+
+    <button *ngIf="this.download==false" (click)="descargar();" class="btn btn-outline-success buttondownload" disabled><span>Download</span></button>
+    
+    
+    <button *ngIf="this.download==true" (click)="descargar();" class="btn btn-outline-success buttondownload">
+      <img class="iconodescarga" src="../../../assets/ICONO PDF DOWNLOAD.png" alt="">
+      <span>Download</span>
+    </button>
+  </div>
+</div>
+
+
+
+<app-footer-main></app-footer-main>
+
+
+
+

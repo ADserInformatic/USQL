@@ -1,0 +1,112 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link"  >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" class="nav-link active" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="row">
+                        <h2>Add Photo</h2>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <form (ngSubmit)="uploadPhoto()" [formGroup]="photoForm" autocomplete="off">
+
+                                
+                                <div class="form-group">
+                                    <label>Text Caption:</label>
+                                    <input type="textbox" name="titulo"  class="form-control" formControlName="titulo" autofocus>
+                                    <!--Error-->
+                                    <div *ngIf="photoForm.get('titulo')?.invalid && (photoForm.get('titulo')?.dirty || photoForm.get('titulo')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Text Caption</strong> is required. Maximum 50 characters.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                    <!-- Control de pattern -->
+                                </div>
+                                <br>
+                                <span> Photo for Data Visuals </span>
+                                <div *ngIf="this.subiendo">
+                                    <!-- <img src="./../../../assets/uploading2.gif" alt=""> -->
+                                    <progress id="file" value="{{this.porcentaje}}" max="{{this.total}}" style="width: 100%;height: 15px;"></progress>
+                                    <p style="margin-left:48%">{{this.calculo}}</p> 
+                                    <!-- <div class="progress" style="width: 100%;">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated " style="width: {{this.calculo}};" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" >{{this.calculo}}</div>
+                                    </div> -->
+                                    <div *ngIf="this.errorcarga" class="alert alert-danger">
+                                        <div>
+                                            <strong>Sorry</strong>. Something is wrong. Check the format and try again later.
+                                        </div>
+                                    </div>
+                                    <div *ngIf="this.exito" class="alert alert-success">
+                                        <div>
+                                            <strong>Suscessfuly</strong>.
+                                        </div>
+                                    </div>
+                                </div>
+                                <label *ngIf="!this.subiendo">
+                                    <div class="field">
+                                        <div class="file has-name is-primary is-fullwidth">
+                                            <div class="mb-3">
+                                                
+                                                <input class="form-control" type="file" id="formFile" #fileInput4 (change)="onChange($event)" formControlName="url" >
+                                            </div>
+                                            <!-- <label class="file-label">
+                                                <input class="file-input" type="file" name="file" #fileInput4
+                                                    (change)="onChange($event)" formControlName="url" />
+                                            </label> -->
+                                        </div>
+                                    </div>
+                                    <div class="containerperfil">
+                                        <div class="field">
+                                            <div class="column">
+                                                <img [src]="photoSelected || imageUrl" class="img-fluid" (click)="fileInput4.click()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="hide">View:</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide"  value="0" id="0" formControlName="hide">
+                                            Only registered
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide"  value="1" id="1" checked="" formControlName="hide">
+                                            All.(public)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn float-right btn-outline-success" style="margin-left: 5px;"[disabled]="photoForm.invalid">Add</button>
+                                    <a routerLink="/pholist"><button class="btn float-right btn-outline-danger">Cancel</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-main></app-footer-main>

@@ -1,0 +1,39 @@
+.cuerpoTre .busqueda .distinte2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.cuerpoTre .busqueda .distinte2 button{
+    margin: 10px auto 0px auto;
+    bottom: 0px;
+    font-size: 1rem;
+    background-color: var(--azul);
+    color: var(--blanco);;
+    text-transform: uppercase;
+    height: max-content;
+    display: table;
+    width: 8rem;
+    border: .5px solid var(--blanco);
+}
+.cuerpoTre .busqueda .distinte2 button span{
+    padding: .2rem 10px;
+    font-size: 1rem;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.delhome{
+    margin-top: 0rem;
+    margin-bottom: -3rem;
+}
+.tttitulo{
+    margin-top: 3rem;
+}
+@media(max-width: 700px){
+    .cuerpoTre button{
+        width: 200%;
+    }
+    .cuerpoTre .busqueda .distinte2 button span{
+        padding: .2rem 5px;
+    }
+}
+

@@ -1,0 +1,19 @@
+<div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+
+<div class="reporte">
+  <h1>{{this.foto.titulo}}</h1>
+  <div class="img">
+    <img src="{{this.foto.direccion}}" alt="">
+  </div>
+  
+  <br><br>
+  <button routerLink="/dvisuals" (click)="recargar();">Back</button>
+  <br><br>
+</div>
+
+<app-footer-main></app-footer-main>

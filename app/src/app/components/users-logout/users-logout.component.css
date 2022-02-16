@@ -1,0 +1,40 @@
+.sidebar{
+    margin: 0px 0px;
+    padding: 2rem 0px;
+}
+.sidebar .nav{
+    background-color: var(--azul);
+}
+.sidebar .active{
+    background-color:var(--violeta);
+}
+.sidebar .nav a{
+    color:var(--blanco);
+}
+.btn{background-color: var(--violeta);
+color: var(--blanco);}
+.btn:hover{background-color: rgb(204, 41, 41);
+    color: var(--blanco);}
+    .btn:active{
+        background-color:rgb(175, 0, 0);
+        color: var(--blanco);
+    }
+    .sidebar{
+        margin: 0px 0px;
+        padding: 2rem 0px;
+    }
+    .sidebar .nav{
+        background-color: var(--azul);
+    }
+    .sidebar .active{
+        background-color:var(--violeta);
+        border: .2px solid var(--violeta);
+    }
+    .sidebar .nav a{
+        color:var(--blanco);
+        border: .2px solid var(--azul);
+    }
+    .sidebar .nav a:hover{
+        border: .2px solid var(--blanco);
+    }
+    

@@ -1,0 +1,49 @@
+<div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+
+
+<div class="cuadro" >
+    <div class="mitad1">
+        <h1><strong> POLICY ANALYSIS</strong></h1>
+    </div>
+    <div class="mitad2">
+        <img src="../../../assets/ICON POLICY.png" alt="">
+    </div>
+    
+</div>
+<div class="cuadro1">
+    <div class="part4">
+    </div>
+    <div class="part2"></div>
+</div>
+<!-- Informar -->
+
+<div class="contInfo">
+    <li  *ngFor="let noti of todaslasnews">
+      <div class="InfoLi1" *ngIf="todaslasnews.indexOf(noti)%2==0">
+          <div class="Info1" >
+              <img src={{noti.foto_portada}} alt="">
+          </div>
+          <div class="Info2">
+              <h3>{{noti.titulo}}</h3>
+              <p>{{noti.subtitulo}}</p>
+              <button routerLink={{noti.descripcion}}>read more</button>
+          </div>
+      </div>
+      <div class="InfoLi2" *ngIf="todaslasnews.indexOf(noti)%2!=0">
+          <div class="Info4">
+              <h3>{{noti.titulo}}</h3>
+              <p>{{noti.subtitulo}}</p>
+              <button routerLink={{noti.descripcion}}>read more</button>
+          </div>
+          <div class="Info3" >
+            <img src={{noti.foto_portada}} alt="">
+          </div>
+      </div>
+    </li>
+<div>
+    <app-footer-main></app-footer-main>

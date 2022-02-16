@@ -1,0 +1,38 @@
+.reporte{
+    width: 80%;
+    margin: auto;
+}
+.reporte h1{
+    width: 100%;
+    color: var(--azul);
+    padding: 1rem 0px;
+}
+.reporte button{
+    margin: 1rem;
+    padding: 3px 20px;
+    bottom: 0px;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    height: max-content;
+    background: var(--azul);
+    color: var(--blanco);
+}
+.reporte .video{
+    margin: 50px auto;
+    width: 100%;
+    text-align: center;
+}
+.reporte .video video{
+    width: 80%;
+}
+.reporte button:hover{
+    filter: brightness(1.5);
+}
+.reporte button:active{
+    color: var(--azul);
+    background: var(--blanco);
+}
+.reporte img{
+    margin: 2rem auto;
+}

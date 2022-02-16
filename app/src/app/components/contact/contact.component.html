@@ -1,0 +1,90 @@
+<div class="cuerpoCuatro">
+    <div class="formulario">
+        <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+            
+             <h2>CONTACT US</h2>
+
+             <!-- NOMBRE -->
+             <div class="form-group">
+                <!-- <i class="fas fa-user"></i> -->
+                <!-- placeholder="Ingrese su nombre completo" -->
+                <p>
+                    <label for="fullname">Full Name</label>
+                    <input name="nombre" [(ngModel)]="service.formData.nombre" type="text" class="form-control "  ng-maxlength="8" required #nombre="ngModel" (keyup)="corregido()" >
+                </p>
+
+                <div [hidden]="(nombre.valid || (nombre.pristine && !nombre.touched))" class="alert alert-danger" pattern="[a-zA-Z]$">
+                        <div>
+                                The <strong> Name </strong> is required and only alphabetic values are accepted. It cannot contain numbers or symbols. 
+                        </div>
+                </div>
+            
+            </div>
+
+
+                    <!-- CORREO ELECTRONICO -->
+            <div class="form-group">
+                <!-- <i class="far fa-envelope"></i> -->
+                <p>
+                     <label for="e-mail">e-mail</label>
+                    <input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" #correo="ngModel" name="correo" [(ngModel)]="service.formData.correo" type="email" class="form-control" (keyup)="corregido()" required>
+                 </p>
+
+                <div [hidden]="(correo.valid || (correo.pristine && !correo.touched))" class="alert alert-danger">
+                        <div>
+                                The <strong> Email </strong> is required. And it can only contain letters,
+                                numbers, periods, hyphens, and underscore. 
+                        </div>
+                </div>
+            </div>
+                   
+            <!-- DESCRIPCION -->
+            <div class="form-group message">
+                                        <!-- <i class="far fa-edit"></i> -->
+                <p>
+                     <label for="message">message</label>
+                     <textarea #consulta="ngModel" name="consulta" cols="3" rows="2" [(ngModel)]="service.formData.consulta" type="text" class="form-control" ngModel required (keyup)="corregido()"></textarea>
+                </p>
+
+                <div [hidden]="(consulta.valid || (consulta.pristine && !consulta.touched))"
+                            class="alert alert-danger">
+                            <div>
+                                <strong>You must enter a query. </strong>
+                            </div>
+                </div>
+            </div>
+
+            <!-- BOTONES -->
+            <div *ngIf="errorG"  class="alert alert-danger" style="text-align: center;">
+                    <div>
+                        THERE IS AN INCONVENIENCE ... TRY LATER. 
+                    </div>
+            </div>
+            <div *ngIf="noerror&&!esperar&&!errorG"  class="alert alert-success" style="text-align: center;">
+                    <div>
+                        YOUR INQUIRY WAS SENT CORRECTLY 
+                    </div>
+            </div>
+            <div *ngIf="esperar"  class="alert alert-primary" style="text-align: center;">
+                    <div>
+                        PLEASE WAIT ... YOUR QUERY IS BEING PROCESSED 
+                    </div>
+            </div>
+            <div class="form-group send"> 
+                    <p>
+                        <button style="background-color: #F4F4F4; color: #020568;" type="submit"  [disabled]="form.invalid"><span> Send</span><span class="material-icons">near_me</span></button>
+                            <!-- *ngIf="limpiar" -->
+                    </p>
+            </div>
+        </form>
+    </div> 
+    <div class="buscar">
+         <div id="mapid" style="width: 100%; height: 100%;margin-bottom: 10%;">
+        
+        </div>
+         <!-- <img src="../../../assets/mapa.jpg" alt=""> -->
+    </div>
+ </div>
+
+
+

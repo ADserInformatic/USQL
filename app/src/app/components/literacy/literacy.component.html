@@ -1,0 +1,84 @@
+<div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+
+
+  <div class="cuadro">
+    <div class="mitad1">
+        <h1><strong> TEACHING & LEARNING </strong></h1>
+    </div>
+    <div class="mitad2">
+        <img src="../../../assets/ICON LITERACY.png" alt="">
+    </div>
+    
+</div>
+<div class="cuadro1">
+    <div class="part4">
+    </div>
+    <div class="part2"></div>
+</div>
+<!-- Informar -->
+
+<div class="contInfo">
+    <li  *ngFor="let noti of todaslasnews">
+      <div class="InfoLi1" *ngIf="todaslasnews.indexOf(noti)%2==0">
+          <div class="Info1" >
+              <img src={{noti.foto_portada}} alt="">
+          </div>
+          <div class="Info2">
+              <h3>{{noti.titulo}}</h3>
+              <p>{{noti.subtitulo}}</p>
+              <button routerLink={{noti.descripcion}}>read more</button>
+          </div>
+      </div>
+      <div class="InfoLi2" *ngIf="todaslasnews.indexOf(noti)%2!=0">
+          <div class="Info4">
+              <h3>{{noti.titulo}}</h3>
+              <p>{{noti.subtitulo}}</p>
+              <button routerLink={{noti.descripcion}}>read more</button>
+          </div>
+          <div class="Info3" >
+            <img src={{noti.foto_portada}} alt="">
+          </div>
+      </div>
+    </li>
+<div>
+    <app-footer-main></app-footer-main>
+
+
+
+<!-- <div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+  <div class="cuadro">
+    <div class="mitad1">
+        <h1><strong>Literacy</strong> </h1>
+    </div>
+    <div class="mitad2">
+        <img src="../../../assets/ICON LITERACY.png" alt="">
+    </div>
+    
+</div>
+<div class="cuadro1">
+    <div class="part4">
+    </div>
+    <div class="part2"></div>
+</div>
+
+
+<div class="pdfs">
+    <li class="pdf" *ngFor="let noti of todaslasnews">
+        <div class="prim" ><i><span class="material-icons">play_arrow</span></i></div>
+        <div class="seg"  *ngIf="todaslasnews.indexOf(noti)==0" ><a class="raro" routerLink={{noti.subtitulo}}><h3>{{noti.titulo}}</h3></a></div>
+        <div class="seg"  *ngIf="todaslasnews.indexOf(noti)!=0" ><a routerLink={{noti.subtitulo}}><h3>{{noti.titulo}}</h3></a></div>
+    </li>
+</div>
+
+<app-footer></app-footer> -->
+

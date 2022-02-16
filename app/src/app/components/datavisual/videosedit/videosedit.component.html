@@ -1,0 +1,19 @@
+<div *ngIf="estado==false;">
+    <app-navbar></app-navbar>
+  </div>
+  <div *ngIf="estado==true;">
+    <app-navbar-reg></app-navbar-reg>
+  </div>
+
+<div class="reporte">
+  <h1>{{this.video.titulo}}</h1>
+  <div class="video">
+    <video src="{{this.video.url}}" autoplay controls></video>
+  </div>
+  
+  <br><br>
+  <button routerLink="/dvisuals">Back</button>
+  <br><br>
+</div>
+
+<app-footer-main></app-footer-main>

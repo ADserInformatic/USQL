@@ -1,0 +1,59 @@
+      <app-navbar></app-navbar>
+
+  <div class="cuerpoCuatro2">
+    <div class="formulario2" >
+              <div id="login">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete=off>
+                  <div class="container">
+                    <strong>
+                      <h2 > Welcome</h2>
+                    </strong>
+                    <br><br>
+                    <p>
+                        <label><strong> E-Mail</strong> </label>
+                        <input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" #email="ngModel" name="email"
+                          [(ngModel)]="service.formData.email" type="text" class="form-control" placeholder=" Entry E-mail Registered"
+                          required>
+                    </p>
+                    <div [hidden]="email.valid || (email.pristine && !email.touched)" class="alert alert-danger">
+                      <div>
+                        The <strong> Email </strong> is required. And it can only contain letters, numbers, periods, hyphens, and underscore. 
+                      </div>
+                    </div>
+                    <p>
+                    <label for="psw" > <b>Password</b></label>
+                    <input #password="ngModel" name="password" [(ngModel)]="service.formData.password" type="password"
+                      class="form-control" placeholder="Entry your Password" required pattern=".{4,12}$">
+                    </p>
+                    <div [hidden]="password.valid || (password.pristine && !password.touched)" class="alert alert-danger">
+                      <div>
+                        You must enter your password. 
+                      </div>
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger">
+                      <div>
+                        <strong>{{mensaje}}</strong>
+                      </div>
+                    </div>
+                    <div class="send">
+                      <p>
+                           <button type="submit" style="margin-top: 10px; width: auto; padding: 10px;"
+                                [disabled]="form.invalid"><strong>Login</strong></button>
+                    </p>
+                    </div>
+                  </div>  
+                  
+                </form>
+                <div class="container">
+                  <a routerLink="/"><button type="button" style="margin:0px 5px; background-color: #F4F4F4; color: #512475;"><strong>Go to Page</strong></button></a>
+                  <!-- <button type="button" class="olvido">Olvidó la contraseña</button> -->
+                  <a href="#" routerLink="/newreg"><button type="button"
+                    style="margin:0px 5px; background-color: #F4F4F4; color: #512475;"><strong>Check in</strong></button></a>
+                </div>
+              </div>
+          </div>
+        </div>
+    
+ 
+
+        <app-footer-main></app-footer-main>

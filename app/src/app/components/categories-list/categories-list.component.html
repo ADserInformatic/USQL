@@ -1,0 +1,96 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link" routerLink="/panela">Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" class="nav-link active" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+
+    
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+            
+            <div class="row">
+                <a routerLink="/categoryadd"><button class="btn btn-outline-primary"><i
+                            class="fas fa-user-plus"></i> Add Category</button></a>
+                <!-- <div class="float-right">
+                    <div class="m5"><i class="fa fa-eye"></i> View</div>
+                    <div class="m5"><i class="fas fa-plus-circle"></i> Active</div>
+                    <div class="m5"><i class="fas fa-minus-circle"></i> Desactive</div>
+                    <div class="m5"><i class="fas fa-edit"></i> Edit</div>
+                    <div class="m5"><i class="fas fa-eraser"></i> Delete</div>
+                </div> -->
+            </div>
+            <br />
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name Category</th>
+                                <!-- <th scope="col">Appears on the bar</th>
+                                <th scope="col">View for all users</th> -->
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr scope="row" *ngFor="let category of categories">
+                                <td class="d-none d-md-table-cell">
+                                    {{category.nombre}}
+                                </td>
+                                <!-- <td>
+                                    <p *ngIf="category.portada==true;">YES</p>
+                                    <p *ngIf="category.portada==false;">NO</p>
+                                </td>
+                                <td>
+                                <p *ngIf="category.hide==true;">YES.(public)</p>
+                                   <p *ngIf="category.hide==false;">NO.(only registered)</p>
+                                </td> -->
+                                <td>
+                                    <!-- <a routerLink="/viewuser/{{user.id_usuario}}"><i
+                                        class="fas fa-eye"></i></a> -->
+                                <a routerLink="/categoryedit/{{category._id}}" ><i class="material-icons">edit</i></a>
+
+                                <a routerLink="/categorydel/{{category._id}}" ><i class="material-icons">delete_forever</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+                
+            
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-main></app-footer-main>
+
+
+
+
+
+
+
+
+
+
+
+
+

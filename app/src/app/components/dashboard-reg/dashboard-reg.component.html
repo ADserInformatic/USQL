@@ -1,0 +1,65 @@
+<app-navbar-reg></app-navbar-reg>
+
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+<br>
+        <a class="nav-link" class="nav-link active" >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a> 
+                  <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div class="tabpanel" role="tabpanel" aria-labelledby="v-pills-home-tab">
+         <h1>Welcome to your administration panel!</h1> 
+         <h2>Here you can edit your website.</h2>
+          <h3>Home</h3>
+          <p> * Here you can edit the information that appears in the main tab "home". Text "WHO WE ARE" and personal information.</p>
+          <h3>Users</h3>
+         <p>          * Here you can view, add, edit and delete users and their permissions on the page.
+        </p>
+         <p>          * A simple logged-in user does not have access to this panel, but to the information that is hidden.
+        </p>
+         <p>          * An administrator can access all the functions of this panel.
+        </p>
+          <p>          * Remember that an Administrator user can delete other Administrator users.
+          </p>
+          <h3>Categories</h3>
+          <p>          * Here you can view, add and delete categories that will be displayed when adding reports.
+          </p>
+          <p>          * You can create a special category to incorporate hidden reports for all users where you can add reports only visible to registered and logged in users.
+          </p>
+          <h3>Reports</h3>
+          <p>          * The reports you add in the "LITERACY" category will be displayed in that tab.
+          </p>
+          <p>          * The reports you add in the "POLICY ANALISYS" category will be displayed in that tab.
+          </p>
+          <p>          * If you add hidden reports for all users, only registered users who are logged in will see it.
+          </p>
+          <p>          * The reports that you add with the active option "appear in home" will be shown in the following 3 reports of "latest report", if it is not active, they will be shown in "latest report" but when adding another report, it will no longer appear in the tab home.
+          </p>
+          <p>          * After adding a report with its main image (the one that is shown on the cover and in searches), you can enter to edit the report to add a secondary image that is displayed when viewing the report
+          </p>
+          <h3>          Data Visuals
+          </h3>
+          <p>          In the Visual Data options, you will be able to view, add and delete images that will be displayed in that tab.
+          </p>
+          <h3>Logout</h3>
+          <p>          Exit the administration panel 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-main></app-footer-main>

@@ -1,0 +1,35 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <div *ngIf='this.estado'>
+        <a class="nav-link" >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <!-- <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a> -->
+        <hr style="color: white;">
+      </div>
+        <a class="nav-link" class="nav-link active"  routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <button class="btn" (click)="this.desloguearse();"> Logout and Go to the Page</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-main></app-footer-main>
+
+
+

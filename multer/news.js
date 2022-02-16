@@ -4,9 +4,10 @@ const path = require('path');
 //modulo paara subir img:
 const multer = require('multer');
 //configuracion para usar dentro del midleware multter:
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, path.parse(__dirname).dir  + '/img/news')
+        cb(null, path.resolve(__dirname,"../../public_html/assets/img/Fotos"))
     },
     filename: (req, file, cb)=>{
         const filT = /jpeg|jpg|png|gif/;
@@ -19,6 +20,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const fotonoticia = multer({storage});
+const fotoportada = multer({storage});
 
-exports.fotonoticia = fotonoticia.single('foto')
+
+exports.fotoportada = fotoportada.single('foto_portada')

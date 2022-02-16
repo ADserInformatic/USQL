@@ -9,14 +9,12 @@ const noticiaSchema = mongoose.Schema({
     titulo: {
         type: String,
         require: true,
-        min: 2, 
-        max: 255
+
     },
     subtitulo:{
         type: String,
         require: true,
-        min: 2, 
-        max: 1000
+
     },
     descripcion:{
         type: String,
@@ -25,31 +23,38 @@ const noticiaSchema = mongoose.Schema({
     foto_portada:{
         type: String,
         require: true,
-        min: 2, 
-        max: 1000
+
     },
     foto_noticia:{
         type: String,
         require: true,
-        min: 2, 
-        max: 1000
-    },
 
+    },
+//0 solo lo ven los logueados         1 lo ven todos
     hide:{
         type: String,
         require: true,
-        min: 2, 
-        max: 10
+
     },
     date:{
         type: Date,
         default: Date.now
     },
-    video_noticia:{
+    // 0 no aparece en portada   1 aparece
+    portada:{ 
         type: String,
         require: true,
-        min: 2, 
-        max: 1000
+    },
+    video_noticia:{
+        type: String,
+        default: "",
+        require: true
+
+    },
+    tableau:{
+        type: String,
+        default:"",
+        require:true
     }
 });
 module.exports=mongoose.model('Noticia',noticiaSchema);

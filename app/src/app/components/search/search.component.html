@@ -1,0 +1,118 @@
+
+<div class="cuerpoTre">
+    <h2 class="tttitulo" ><strong>RESOURCES TO DOWNLOAD</strong></h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm" autocomplete="off">
+        <div *ngIf="this.mostrar" class="busqueda">
+                <p>
+                <label><strong>topic</strong></label>
+                <select name="category" formControlName="category" class="topics">
+                    <option  value="-1" selected>All</option><br> 
+                    <option *ngFor="let cat of categories" value="{{cat._id}}"> {{cat.nombre}} </option>
+                </select>
+                </p>
+            
+            <div class="form-group">
+                    <p>
+                        <label><strong>year</strong></label>
+                        <input type="text" name="year" formControlName="year">
+                    </p>
+                    <div *ngIf="userForm.get('year')?.invalid && (userForm.get('year')?.dirty)" class="alert alert-danger">
+                        The year must contain 4 numeric digits.
+                    </div>
+            </div>
+            <div class="form-group">
+                
+             <p class="distinte">
+                <label><strong>keyword</strong></label>
+                <input type="text" name="keyword" formControlName="keyword">
+            </p>
+            </div>
+
+            <div class="form-group botes">
+                
+                <p class="distinte1">
+                    <button class="este ordenar" (click)="this.ordenarbusqueda();"><span>Date</span><span class="material-icons">sort</span></button>
+                    <button type="submit" class="este" [disabled]="userForm.untouched"><span>Search</span><span class="buscando material-icons">search</span></button>
+                    <button class="este reset" (click)="this.limpiar();"><span>RESET</span> </button>
+                </p>
+            </div>
+        </div>
+        
+        <div *ngIf="!this.mostrar" class="busqueda delhome">
+            <p>
+            <label><strong>topic</strong></label>
+            <select name="category" formControlName="category" class="topics">
+                <option  value="-1" selected>All</option><br> 
+                <option *ngFor="let cat of categories" value="{{cat._id}}"> {{cat.nombre}} </option>
+            </select>
+            </p>
+        
+                <div class="form-group">
+                <p>
+                    <label><strong>year</strong></label>
+                    <input type="text" name="year" formControlName="year">
+                </p>
+                <div *ngIf="userForm.get('year')?.invalid && (userForm.get('year')?.dirty)" class="alert alert-danger">
+                    The year must contain 4 numeric digits.
+                </div>
+                </div>
+                <div class="form-group">
+                    <p class="distinte">
+            <label><strong>keyword</strong></label>
+            <input type="text" name="keyword" formControlName="keyword">
+                    </p>
+                </div>
+
+                <div class="form-group botes">
+            
+                    <p class="distinte2">
+                        <button type="submit" class="este" [disabled]="userForm.untouched"><span>Search</span><span class="buscando material-icons">search</span></button>
+                    </p>
+                </div>
+        </div>
+
+
+<!-- 
+                <div class="form-group form-group-toggle botonesPri" data-toggle="options" formControlName="category">
+                         <div *ngFor="let cat of categories">
+                         <option type="checkbox" name="options" id={{cat.id_categoria}} class="btn-check" value="{{cat.id_categoria}}" autocomplete="off" >{{cat.nombre}}</option>
+                            <label  for={{cat.id_categoria}}>{{cat.nombre}}</label>
+                        </div>
+                     </div> -->
+            
+
+               
+    </form>
+</div>
+<div class="pedaz">
+    <div class="ped1"></div>
+    <div class="ped2"></div>
+</div>
+<br>
+
+<div class="resour" *ngIf="this.mostrar">
+    <div class="resourDon">
+        <div class="li" *ngFor="let noticia of news">
+
+            <div class="descImg">
+                <a routerLink="{{noticia.descripcion}}"><img src={{noticia.foto_portada}} alt=""> </a>
+                 
+            </div>
+
+            <div class="descTex" style="background-color: #512475;" *ngIf="news.indexOf(noticia)==0" >
+                <p class="dat">{{noticia.date}}</p>
+                <h6><a routerLink="{{noticia.descripcion}}">{{noticia.titulo}}</a></h6>
+                <p>{{noticia.subtitulo}}</p>
+            </div>
+
+            <div class="descTex" *ngIf="news.indexOf(noticia)!=0">
+                <p class="dat">{{noticia.date}}</p>
+                <h6><a routerLink="{{noticia.descripcion}}">{{noticia.titulo}}</a></h6>
+                <p class="abaj">{{noticia.subtitulo}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,233 @@
+.cuadro{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 88vh;
+}
+.cuadro .mitad1{
+    text-align: center;
+    display: flex;
+}
+.cuadro .mitad2{
+    text-align: center;
+    display: flex;
+}
+.cuadro .mitad1 h1{
+    width: 60%;
+    margin: auto;
+}
+.cuadro .mitad2 img{
+    width: 40%;
+    margin: auto;   
+}
+.cuadro .mitad1 h1{
+    text-align: left;
+    font-size: 4 rem;
+    color: var(--azul);
+}
+.cuadro .mitad2{
+    background: linear-gradient(to bottom, var(--blanco)50%, var(--azul)50%);
+}
+.cuadro1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cuadro1 .part1{
+    background-color: var(--azul);
+    align-items: center;
+    padding: 10px 30px;
+    color: var(--blanco);
+    display: flex;
+}
+.contInfo{
+    width: 100%;
+    list-style: none;
+}
+.contInfo .InfoLi1, .contInfo .InfoLi2{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    margin-bottom: 2em;
+    opacity: .8;
+}
+.Info1{
+    width: 100%;
+    text-align: right;
+    height: 20rem;
+}
+.Info1 img{
+    width: 100%;
+    height: 100%;
+    margin-top: -1rem;
+    margin-right: -4em;
+    object-fit: cover;
+    opacity: .8;
+}
+.Info2{
+    background-color: var(--violeta);
+    color: var(--blanco);
+    width: 100%;
+    padding: 1.5em 3em;
+    margin-bottom: 2em;
+    display: grid;
+    grid-template-rows: 3fr 5fr 2fr;
+    box-sizing: border-box;
+    height: 16rem;
+    z-index: 5;
+}
+.Info2 button, .Info4 button{
+    color: var(--blanco);
+    background-color: var(--azul);
+    border: .5px solid var(--blanco);
+    min-width: 30%;
+    max-width: 50%;
+    padding: .3em .5em;
+    text-transform: uppercase;
+}
+.Info2 button:hover, .Info4 button:hover{
+    filter: brightness(1.5);
+}
+.Info2 button:active, .Info4 button:active{
+    background: var(--blanco);
+    color: var(--azul);
+}
+.Info2 h1{
+    padding-bottom: .5em;
+}
+.contInfo .InfoLi2{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    margin-bottom: 4rem;
+}
+.Info4{
+    background-color: var(--azul);
+    color: var(--blanco);
+    width: 100%;
+    padding: 1.5em 3em;
+    margin-bottom: 2em;
+    display: grid;
+    z-index: 1;
+    height: 16rem;
+    grid-template-rows: 3fr 5fr 2fr;
+    box-sizing: border-box;
+}
+.Info4 p, .Info2 p{
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.Info4 h3,
+.Info2 h3{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+.Info3{
+    width: 100%;
+    text-align: left;
+    height: 50vh;
+}
+.Info3 img{
+    width: 100%;
+    height: 100%;
+    margin-top: -1rem;
+    margin-left: -4em;
+    object-fit: cover;
+    opacity: .8;
+}
+.contInfo .InfoLi1:hover,
+.contInfo .InfoLi2:hover{
+    opacity: 1;
+}
+
+@media(max-width: 920px){
+    body{
+        font-size: 16px;
+    }
+    .cuadro .mitad1 h1{
+        text-align: left;
+        font-size: 3rem;
+        color: var(--azul);
+    }
+    .Info4 p, .Info2 p{
+        font-size: .8rem;
+    }
+    .Info3, .Info1{
+        height: 18rem;
+    }
+    .Info1 img{
+        margin-top: -1em;
+        margin-right: -1em;
+        object-fit: cover;
+    }
+    .Info3 img{
+        margin-top: -1em;
+        margin-left: -1em;
+        object-fit: cover;
+    }
+
+}
+
+@media(max-width: 700px){
+
+   
+
+
+/*DATA VISUALS*/ 
+    .cuadro{
+        height: 60vh;
+    }
+    .cuadro .mitad1 h1{
+        text-align: left;
+        font-size: 40px;
+        color: var(--azul);
+    }
+    .cuadro .mitad2 img,
+    .cuadro1 .part2{
+        display: none;
+    }
+    .cuadro .mitad2{
+        display: none;
+    }
+    .mitad1, .part1, .part3, .part4{
+        grid-column: 1 / 3;
+    }
+    .cuadro1 .part3 h1, .part1 h1{
+        width: 100%;
+        text-align: center;
+    }
+    
+
+    /* POLICYS */
+    .contInfo{
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+    .contInfo .InfoLi1, .contInfo .InfoLi2{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        grid-template-columns: 1fr;
+        opacity: 1;
+    }
+    .Info1, .Info3{
+        display: none;
+    }
+    .Info2, .Info4{
+       grid-template-rows: 2fr 5fr 1fr; 
+    }
+
+
+}
+
+
+/* .navegador{
+    display: grid;
+    grid-template-columns: 20% 70% 20%;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+} */

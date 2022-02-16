@@ -1,0 +1,8 @@
+{
+    "/api/*":{
+    "target": "https://api.usql.org:9070",
+    "secure":false,
+    "logLevel":"debug"
+    ,"changeOrigin":true
+    }
+}

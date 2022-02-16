@@ -1,0 +1,115 @@
+<div class="divmenu" style="background-color: #eaeaea;">
+    <app-navbar></app-navbar>
+  </div>
+<main class="col px-0 flex-grow-1">
+    <div class="container">
+        <article>
+            <div class="inner-content" style="background-color: rgb(255, 255, 255); height: 1300px;"
+                id="contenido">
+                <!--Contenido-->
+                <div class="container">
+                    <div class="row">
+                        <h2>Add User</h2>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <form (ngSubmit)="onSubmit()" [formGroup]="userForm" autocomplete="off">
+                                <div class="form-group">
+                                    <label>Nickname:</label>
+                                    <input type="textbox" name="nickname" class="form-control" formControlName="nickname">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('nickname')?.invalid && (userForm.get('nickname')?.dirty || userForm.get('nickname')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Username</strong> is required.
+                                        </div>
+                                    </div>
+                                    <!-- SI ESTA USADO -->
+                                    <div *ngIf="erroru" class="alert alert-danger">
+                                        <div>
+                                            <strong>Username</strong> is not available.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                    <!-- Control de pattern -->
+                                    <div *ngIf="userForm.get('nickname')?.hasError('pattern')"  class="alert alert-danger">
+                                        <div>
+                                            <strong>Username</strong> must not have uppercase.
+                                        </div>
+                                    </div>
+                                    <!-- Fin Control de pattern -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <input type="textbox" name="nombre" class="form-control" formControlName="nombre">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('nombre')?.invalid && (userForm.get('nombre')?.dirty || userForm.get('nombre')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Name </strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input type="textbox" name="apellido" class="form-control" formControlName="apellido">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('apellido')?.invalid && (userForm.get('apellido')?.dirty || userForm.get('apellido')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Last Name </strong> is required.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input type="textbox" name="email" class="form-control" formControlName="email">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Email</strong> is required.
+                                        </div>
+                                    </div>
+                                    <!-- SI ESTA USADO -->
+                                    <div *ngIf="errorc"  class="alert alert-danger">
+                                        <div>
+                                            <strong>Email</strong> is already registered.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                    <!-- Control de pattern -->
+                                    <div *ngIf="userForm.get('email')?.hasError('pattern')"  class="alert alert-danger">
+                                        <div>
+                                            The <strong>email</strong> entered does not have a correct format.
+                                        </div>
+                                    </div>
+                                    <!-- Fin Control de pattern -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Password:</label>
+                                    <input type="password" name="password" class="form-control" formControlName="password" autocomplete="off">
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Password </strong> is required and must be at least 6 digits.
+                                        </div>
+                                    </div>
+                                    <!--Fin Error-->
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="descripcion" formControlName="descripcion"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn float-right btn-outline-success" style="margin-left: 5px;"[disabled]="userForm.invalid">Add</button>
+                                    <a routerLink="/admusers"><button class="btn float-right btn-outline-danger">Cancel</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Contenido-->
+            </div>
+
+        </article>
+    </div>
+</main>

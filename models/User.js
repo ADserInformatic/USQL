@@ -38,14 +38,29 @@ const userSchema = mongoose.Schema({
         minlength: 2,
         max: 255
     },
+    user_foto:{
+        type: String,
+        required: false,
+        default:"./../../../assets/img/profile.png"
+    }
+    ,
     active: {
         type: Boolean,
-        default: false
+        default: true,
+        required:false,
     },
     token:{
         type: String,
-        default: false
+        default: false,
+        required:false,
+        default:"sin"
+    },
+    user_descripcion:{
+        type: String,
+        required: false,
+        default:"No description"
     }
+
     // date: {
     //     type: Date,
     //     default: Date.now

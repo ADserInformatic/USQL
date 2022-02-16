@@ -1,0 +1,93 @@
+<app-navbar-reg></app-navbar-reg>
+<div class="sidebar">
+<div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <br>
+        <a class="nav-link"  >Settings</a>
+        <a class="nav-link" routerLink="/ppal">Home</a>
+        <a class="nav-link" routerLink="/userslist">Users</a>
+        <a class="nav-link" class="nav-link active" routerLink="/categorieslist">Categories</a>
+        <a class="nav-link" routerLink="/newslist">Reports</a>
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/pholist">Data Visuals Photos</a>
+        <!-- <a class="nav-link" routerLink="/vidlist">Data Visuals Videos</a> -->
+        <hr style="color: white;">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+        <br>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <div role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="row">
+                        <h2>Delete Category</h2>
+                    </div>
+                    <div class="row">
+                        <div class="box">
+                            <form (ngSubmit)="onSubmit()" [formGroup]="userForm" autocomplete="off">
+                                
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <input type="textbox" name="nombre" class="form-control" formControlName="nombre" >
+                                    <!--Error-->
+                                    <div *ngIf="userForm.get('nombre')?.invalid && (userForm.get('nombre')?.dirty || userForm.get('nombre')?.touched)" class="alert alert-danger">
+                                        <div>
+                                            <strong>Name</strong> is required.
+                                        </div>
+                                    </div>
+
+                                 
+                                </div>
+                                
+                                <!-- <div class="form-group">
+                                    <label class="col-md-3 control-label" for="portada">Appear in Home</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="0" id="0" formControlName="portada" >
+                                            No 
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="portada" value="1" id="1" checked="" formControlName="portada" >
+                                            YES
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="hide">View for all users</label>
+                                    <div class="col-md-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="0" id="0" formControlName="hide" >
+                                            NO.(only registered)
+                                        </label>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <label class="radio-inline">
+                                            <input type="radio" name="hide" value="1" id="1" checked="" formControlName="hide" >
+                                            YES.(public)
+                                        </label>
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <div *ngIf="errorc"  class="alert alert-danger">
+                                        <div>
+                                            <strong>Something Wrong Happened. Try later </strong>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="errorcategoria"  class="alert alert-danger">
+                                        <div>
+                                            <strong>You cannot delete this category. Make sure it does not contain reports or is in the categories "Policy Analysis" or "Teaching & Learning"</strong>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn float-right btn-outline-danger" style="margin-left: 5px;"[disabled]="userForm.invalid">Delete</button>
+                                    <a routerLink="/categorieslist"><button class="btn float-right btn-outline-success">Cancel</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-main></app-footer-main>

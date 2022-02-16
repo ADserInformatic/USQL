@@ -22,15 +22,15 @@ const nodemailer=require('nodemailer');
      }
  });
 
- transporter.verify().then(()=>{
-     console.log('listo para enviar email')
- })
+//  transporter.verify().then(()=>{
+//      console.log('listo para enviar email')
+//  })
 
  router.post('/EnviarContacto',async(req,res)=>{
 try{
     const correo= await transporter.sendMail({
         from:"unionsquarelearning@gmail.com",
-        to:"alijihernandez@gmail.com",
+        to:"david@usql.org",
         subject:"Correo de Prueba",
         text:"TEXTO PLANO",
         html:`<b>HELLO WORLD?</b><br>
@@ -42,7 +42,7 @@ try{
                ok:correo.messageId,
                "Preview URL":nodemailer.getTestMessageUrl(correo)
        })}catch(error){
-                return res.status(400).json({
+                return res.json({
                     error:true
                     })
                     }

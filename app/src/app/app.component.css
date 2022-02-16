@@ -1,0 +1,129 @@
+/*Barra de navegacion*/
+.nav{
+    background-color: var(--azul);
+    display: flex;
+    justify-content: space-between;
+}
+.nav .logo{
+    background-color: var(--blanco);
+    width: 20%;
+    margin: 0px 10px 0px 20px;
+    text-align: center;
+}
+.nav .logo img{
+    width: 80%;
+    height: 90%;
+    margin: auto;
+}
+.nav .links{
+    background-color: transparent;
+    width: 60%;
+    margin: auto 5px;
+    text-transform: uppercase;
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.nav .links a{
+    color: var(--blanco);
+    text-decoration-line: none;
+    height: auto;
+    padding: 0px 5px;
+}
+.icons{
+    margin: auto 20px auto 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.icons a{
+    margin: 5px;
+    color: var(--blanco);
+    text-decoration: none;
+}
+.icons img{
+    width: 50px;
+    height: 50px;
+}
+#hamburguer div{
+    width: 30px;
+    height: 3px;
+    background-color: var(--blanco);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hamburguer{
+    display: none;
+}
+#conten{
+    display: none;
+}
+
+
+
+
+@media(max-width: 920px){
+    body{
+        font-size: 16px;
+    }
+
+    /* PRINCIPAL */
+
+    .nav .links{
+        display: none;
+    }
+    .hamburguer{
+        display: block;
+        cursor: pointer;
+        margin: auto 10px;
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    .aparece{
+        display: block;
+        position: absolute;
+        right: 0px;
+        z-index: 5;
+        background-color: var(--azul);
+        padding: 20px 5px;
+        transition: all .5 ease;
+        text-transform: uppercase;
+        animation: menu 1s;
+        width: 30%;
+    }
+    .desapa{
+        animation: desmenu 1s;
+    }
+    @keyframes desmenu {
+        0%{transform: translateX(0px);}
+        100%{transform: translateX(15.625rem);}
+    }
+    @keyframes menu {
+        0%{transform: translateX(200px);}
+        100%{transform: translateX(0px);}
+    }
+    .aparece a{
+        color: var(--blanco);
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+    }
+
+    /* cuarta caja */
+    .buscar img{
+        height: 70vh;
+    }
+
+
+
+    .cuerpoTre .busqueda{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .cuerpoTre .busqueda .distinte1{
+        grid-column: 1 / 4;
+        text-align: center;
+    }
+    .resour .resourDon{
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}

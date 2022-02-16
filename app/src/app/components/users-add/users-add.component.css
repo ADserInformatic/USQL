@@ -1,0 +1,51 @@
+.sexagesimal {
+    width: 40px;
+}
+.sexagesimal, .sexagesimalsec {
+    display: inline-block;
+    padding: 6px;
+    margin-left: 5px;
+}
+.box{
+    max-width: 100%;
+    min-width: 80%;
+    min-height: 350px;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid rgba(177, 177, 177, 0.933);
+    border-radius: 15px ;
+    text-align: justify;
+    margin-top: 80 px;
+    overflow:initial;
+    position:relative;
+  }
+  .cp{
+      width: 30%;
+  }
+  .container{
+    width: 100%;
+    margin-left:50px;
+    margin-top:40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .sidebar{
+    margin: 0px 0px;
+    padding: 2rem 0px;
+}
+.sidebar .nav{
+    background-color: var(--azul);
+}
+.sidebar .active{
+    background-color:var(--violeta);
+    border: .2px solid var(--violeta);
+}
+.sidebar .nav a{
+    color:var(--blanco);
+    border: .2px solid var(--azul);
+}
+.sidebar .nav a:hover{
+    border: .2px solid var(--blanco);
+}
+
+

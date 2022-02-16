@@ -5,32 +5,29 @@ const mainSchema = mongoose.Schema({
     nombre: {
         type: String,
         required: true,
-        min: 2,
-        max: 255
+        default:"portada"
+
     },
     urlwwa: {
         type: String,
         required: true,
-        min: 2,
-        max: 1000
+        default:""
     },
     textwwa: {
         type: String,
         required: true,
-        min: 4,
-        max: 2500
+
     },
     textautor: {
-        type: Number,
+        type: String,
         required: true,
-        min: 1,
-        max: 2000
+
     },
     urlautor: {
         type: String,
         required: true,
-        min: 6,
-        max: 1000
+        default:""
+
     }
 })
 

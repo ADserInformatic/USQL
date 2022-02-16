@@ -1,0 +1,29 @@
+.table-responsive{
+  max-width: 98%;
+  margin: 1px;
+}
+  th{
+    background: #20c3ec;
+  }
+  .m5{
+    margin-left: 5px;
+    float: right;
+  }
+  .sidebar{
+    margin: 0px 0px;
+    padding: 2rem 0px;
+}
+.sidebar .nav{
+    background-color: var(--azul);
+}
+.sidebar .active{
+    background-color:var(--violeta);
+    border: .2px solid var(--violeta);
+}
+.sidebar .nav a{
+    color:var(--blanco);
+    border: .2px solid var(--azul);
+}
+.sidebar .nav a:hover{
+    border: .2px solid var(--blanco);
+}

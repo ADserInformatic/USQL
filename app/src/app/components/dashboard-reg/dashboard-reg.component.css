@@ -1,0 +1,24 @@
+.sidebar{
+    margin: 0px 0px;
+    padding: 2rem 0px;
+    width: 90%;
+}
+.sidebar .nav{
+    background-color: var(--azul);
+    width: 100%;
+}
+.sidebar .active{
+    background-color:var(--violeta);
+    border: .2px solid var(--violeta);
+}
+.sidebar .nav a{
+    color:var(--blanco);
+    border: .2px solid var(--azul);
+}
+.sidebar .nav a:hover{
+    border: .2px solid var(--blanco);
+}
+.tabpanel{
+    margin-right: 5rem;
+    margin-bottom: -2rem;
+}
